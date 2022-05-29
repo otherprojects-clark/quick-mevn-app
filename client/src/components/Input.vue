@@ -12,6 +12,9 @@
 			<input type="submit" value="Submit" class="button">
 			<input type="reset" value="Reset" class="reset">
 		</form>
+		<button style="margin-top: 26px;" @click="this.$router.push('/delete')">
+			Delete all
+		</button>
 	</div>
 </template>
 
@@ -29,18 +32,19 @@ export default {
 	},
 	methods: {
 		async submitForm(){
-			// submit method, axios' post
 			await axios.post(server + 'submit', {
 				name: this.name,
 				age: this.age,
-			}).then(res => {console.log(res)})
-
-			alert(`you've submitted the form ${this.name}`);
+			}).then(res => {
+				console.log(res)
+				alert("Submitted successfully")
+			})
 		}
 	}
 }
-</script>
+export { server }
 
+</script>
 
 <style>
 form {
